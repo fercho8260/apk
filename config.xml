@@ -1,15 +1,16 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.phonegap.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>conectados</name>
+    <name>Unidos</name>
     <description>
-        A blank PhoneGap app.
+        Unidos es una aplicacion para el registro de referidos.
     </description>
     <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+        Desarrollador: Carlos Fernando Riaño
     </author>
     <content src="index.html" />
     <access origin="*" />
     <preference name="loglevel" value="DEBUG" />
     <feature name="http://api.phonegap.com/1.0/network" />
     <access origin="*" onlyInBrowser="true" />
+    <icon src="img/logo.ico" />
 </widget>
