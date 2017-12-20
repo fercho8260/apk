@@ -119,7 +119,7 @@
                 var direccion
                 var municipio
                 
-                archivoValidacion = "http://carlos.byethost14.com/webservices/unidos/editar.php?jsoncallback=?"
+                archivoValidacion = "http://manuelguillermo.com/webservices/editar.php?jsoncallback=?"
                 $.getJSON( archivoValidacion, { documento:datosDocumento, usuario:usuario}).done(function(respuestaServer) {
 
                     if(respuestaServer.length === 0){
@@ -157,7 +157,7 @@
                 var datosMunicipio  = $("#municipio").val()
                 var usuario         = localStorage.getItem('mi_session');
                 
-                archivoValidacion = "http://carlos.byethost14.com/webservices/unidos/editar_refe.php?jsoncallback=?"
+                archivoValidacion = "http://manuelguillermo.com/webservices/editar_refe.php?jsoncallback=?"
                 $.getJSON( archivoValidacion, { documento:datosDocumento, celular:datosCelular, correo:datosCorreo, direccion:datosDireccion, municipio:datosMunicipio, usuario:usuario}).done(function(respuestaServer) {
 
                     if(respuestaServer.validacion == "ok"){

@@ -96,7 +96,7 @@
                 var usuario         = localStorage.getItem('mi_session');
                 
                 if (datosNpwd == datosRpwd) {
-                    archivoValidacion = "http://carlos.byethost14.com/webservices/unidos/cambiar_pwd.php?jsoncallback=?"
+                    archivoValidacion = "http://manuelguillermo.com/webservices/cambiar_pwd.php?jsoncallback=?"
                     $.getJSON( archivoValidacion, { nueva_pwd:datosNpwd ,repetir_pwd:datosRpwd, usuario:usuario}).done(function(respuestaServer) {
                         
                         if(respuestaServer.validacion == "ok"){

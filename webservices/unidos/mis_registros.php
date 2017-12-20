@@ -2,9 +2,9 @@
 	/* Extrae los valores enviados desde la aplicacion movil */
     $lider      = $_GET['usuario'];
 
-    $host = 'sql308.byethost14.com';
-    $bd = 'b14_20600558_prueba';
-    $usuario = 'b14_20600558';
+    $host = 'localhost';
+    $bd = 'i4199213_reunion';
+    $usuario = 'b16_20095033';
     $pass = '1098768795';
 
     $servidor = mysql_connect($host,$usuario,$pass) or die (mysql_error());

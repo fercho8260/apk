@@ -91,7 +91,7 @@
                 // recolecta los valores que inserto el usuario
                 var usuario         = localStorage.getItem('mi_session');
                 var cuenta = 0;
-                archivoValidacion = "http://carlos.byethost14.com/webservices/unidos/mis_registros.php?jsoncallback=?"
+                archivoValidacion = "http://manuelguillermo.com/webservices/mis_registros.php?jsoncallback=?"
                 $.getJSON( archivoValidacion, { usuario:usuario}).done(function(respuestaServer) {
 
                     if(respuestaServer.length === 0){

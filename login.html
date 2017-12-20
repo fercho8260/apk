@@ -69,7 +69,7 @@
                 var datosUsuario = $("#usr").val()
                 var datosPassword = $("#pwd").val()
                 
-                archivoValidacion = "http://carlos.byethost14.com/webservices/unidos/login.php?jsoncallback=?"
+                archivoValidacion = "http://manuelguillermo.com/webservices/login.php?jsoncallback=?"
                 $.getJSON( archivoValidacion, { username:datosUsuario ,password:datosPassword})
                 .done(function(respuestaServer) {
                     

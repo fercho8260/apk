@@ -138,7 +138,7 @@
                 var datosMunicipio  = $("#municipio").val()
                 var usuario         = localStorage.getItem('mi_session');
                 
-                archivoValidacion = "http://carlos.byethost14.com/webservices/unidos/registro.php?jsoncallback=?"
+                archivoValidacion = "http://manuelguillermo.com/webservices/registro.php?jsoncallback=?"
                 $.getJSON( archivoValidacion, { documento:datosDocumento ,nombre1:datosNombre1 ,nombre2:datosNombre2 ,apellido1:datosApellido1 ,apellido2:datosApellido2 ,fechanac:datosFechanac ,tiposang:datosTiposang ,telmovil:datosTelmovil ,correo:datosCorreo ,direccion:datosDireccion ,municipio:datosMunicipio, usuario:usuario}).done(function(respuestaServer) {
                     
                     if(respuestaServer.validacion == "ok"){
