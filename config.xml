@@ -12,5 +12,4 @@
     <preference name="loglevel" value="DEBUG" />
     <feature name="http://api.phonegap.com/1.0/network" />
     <access origin="*" onlyInBrowser="true" />
-    <icon src="img/logo.ico" />
 </widget>
