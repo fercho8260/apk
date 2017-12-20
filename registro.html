@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>Conectados</title>
+        <link rel="icon" href="img/logo.ico">
+        <link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<!--<link rel="stylesheet" href="css/bootstrap.theme.css">
+        <link rel="stylesheet" href="css/bootstrap.theme.min.css">-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<!--<script src="js/npm.js"></script>-->
+        <style type="text/css" media="screen">
+            body{
+                background: url(img/fondo1.jpg) no-repeat center center fixed;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body>
+    	<div class="container" >
+    		<div class="row">
+    			<div class="col-md12" style="padding: 5px">
+                    <button type="button" class="btn pull-left" style="border:0; margin: 0; padding: 0; outline: none; background-color: transparent">
+                        <a href="login.html" title="Regresar">
+                            <span class="glyphicon glyphicon-arrow-left" style="color: #FDFEFE; font-size: 30px; margin: 0; padding: 0;"></span>
+                        </a>
+                    </button>
+                    <button type="button" class="btn pull-right" style="border-radius: 50px; border:0; margin: 0; padding: 0; outline: none; background-color: transparent">
+                        <a href="ayuda.html" title="AYUDA">
+                           <span class="glyphicon glyphicon-exclamation-sign" style="color: #FDFEFE; font-size: 30px; margin: 0; padding: 0;"></span>
+                        </a>
+                    </button>
+                </div>
+    		</div>
+    		<div class="row">
+    			<div class="col-md12">
+    				<form id="signup" style="padding-top: 60px;">
+    					<legend class="text-center header" style="padding-top: 20px; padding-bottom: 20px; border: 0; color: #FDFEFE; font-size: 30px"><b>REGISTRO</b></legend>
+    					<div class="form-group center-block" style="width: 90%; ">
+    						<div class="input-group">
+								<span class="input-group-addon" style="border-radius: 45px 0 0 45px; border-right: 0; background-color: white"><i class="glyphicon glyphicon-user"></i></span>
+								<input type="text" class="form-control" id="usr" placeholder="Usuario" style="border-radius: 0 45px 45px 0; border-left: 0; padding-left: 0">
+							</div>
+						</div>
+                        <div class="form-group center-block" style="width: 90%; ">
+                            <div class="input-group">
+                                <span class="input-group-addon" style="border-radius: 45px 0 0 45px; border-right: 0; background-color: white"><i class="glyphicon glyphicon-envelope"></i></span>
+                                <input type="email" class="form-control" id="email" placeholder="Correo electronico" style="border-radius: 0 45px 45px 0; border-left: 0; padding-left: 0">
+                            </div>
+                        </div>
+						<div class="form-group center-block" style="width: 90%; ">
+							<div class="input-group">
+								<span class="input-group-addon" style="border-radius: 45px 0 0 45px; border-right: 0; background-color: white"><i class="glyphicon glyphicon-lock"></i></span>
+								<input type="password" class="form-control" id="pwd" placeholder="Contraseña" style="border-radius: 0 45px 45px 0; border-left: 0; padding-left: 0">
+							</div>
+						</div>
+						<div class="form-group text-center" style="padding-top: 10px; padding-bottom: 16px">
+                            <button type="submit" class="btn btn-primary btn-lg" style="border-radius: 45px;background: linear-gradient(to left, #ecee1b,#5faf26);">CREAR CUENTA</button>
+                        </div>
+    				</form>
+    			</div>
+    		</div>
+            <br><br><br><br><br><br><br><br><br>
+    	</div>	
+        <script type="text/javascript" src="cordova.js"></script>
+        <script>
+            $('#signup').submit(function() { 
+                
+                // recolecta los valores que inserto el usuario
+                var datosUsuario =  $("#usr").val()
+                var datosEmail =    $("#email").val()
+                var datosPassword = $("#pwd").val()
+                
+                archivoValidacion = "http://carlos.byethost14.com/webservices/unidos/signup.php?jsoncallback=?"
+                $.getJSON( archivoValidacion, { username:datosUsuario ,email:datosEmail ,password:datosPassword})
+                .done(function(respuestaServer) {
+                    
+                    if(respuestaServer.validacion == "ok"){
+                        /// si la validacion es correcta, muestra la pantalla "home"
+                        alert("Ha sido registrado correctamente")
+                        window.location.href =("login.html");
+                    }else if(respuestaServer.validacion == "error"){
+                      /// ejecutar una conducta cuando la validacion falla
+                      alert("El usuario ya existe. Por favor inicie sesion!.")
+                      window.location.href =("login.html");
+                    }else{
+                        alert("Intente nuevamente mas tarde")
+                      window.location.href =("registro.html");
+                    }
+                })
+                return false;
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>Conectados</title>
+        <link rel="icon" href="img/logo.ico">
+        <link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            localStorage.removeItem("mi_session");
+            window.onload=timeout;
+            function timeout(){
+            window.setTimeout("redirect()",3000)}
+
+            function redirect(){
+            window.location="login.html"
+            return}
+        </script>
+    </head>
+    <body>
+    	<div class="container">
+    		<div class="row" style="margin-left: 5; margin-right: 5">
+                <div class="col-md12" style="padding: 5px">
+                    <legend class="text-center header" style="padding-top: 150px; padding-bottom: 20px; border: 0">
+                        <a href="login.html" title="">
+                            <img src="img/banner.png" alt="imagen unidos">
+                        </a>
+                    </legend>
+                    <legend class="text-center header" style="padding-top: 30px; border: 0; font-size: 33px">
+                        GRACIAS POR TU REGISTRO.
+                    </legend>
+                </div>
+            </div>
+    	</div>	
+        <script type="text/javascript" src="cordova.js"></script>
+    </body>
+</html>

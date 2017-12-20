@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>Conectados</title>
+        <link rel="icon" href="img/logo.ico">
+        <link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+        <style type="text/css" media="screen">
+            body{
+                background: url(img/fondo2.jpg) no-repeat center center fixed;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body>
+    	<div class="container">
+    		<div class="row" style="margin-left: 5; margin-right: 5">
+                <div class="col-md12" style="padding: 5px">
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" id="menu1" type="button" data-toggle="dropdown" style=" margin: 0; outline: none; background-color: #FDFEFE; float: left;border-radius: 0 10px 10px 0; padding: 10px 9px 10px 7px">
+                            <span class="glyphicon glyphicon-th-list" style="color: #6b6b6b; font-size: 30px; margin: 0; padding: 0;"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="margin-top: 60px;background: linear-gradient(45deg, #ecee1b, #d71525)">
+                            <li role="presentation" style="border-bottom: 1px solid #FDFEFE;padding: 5px">
+                                <a role="menuitem" tabindex="-1" href="app.html" style="color: #FDFEFE">Inicio</a>
+                            </li>
+                            <li role="presentation" style="border-bottom: 1px solid #FDFEFE;padding: 5px">
+                                <a role="menuitem" tabindex="-1" href="cambiar_pwd.html" style="color: #FDFEFE">Cambiar contraseña</a>
+                            </li>
+                            <li role="presentation" style="border-bottom: 1px solid #FDFEFE;padding: 5px">
+                                <a role="menuitem" tabindex="-1" href="buscar.html" style="color: #FDFEFE">Buscar por cédula</a>
+                            </li>
+                            <li role="presentation" style="border-bottom: 1px solid #FDFEFE;padding: 5px">
+                                <a role="menuitem" tabindex="-1" href="editar.html" style="color: #FDFEFE">Editar registro</a>
+                            </li>
+                            <li role="presentation" style="border-bottom: 1px solid #FDFEFE;padding: 5px">
+                                <a role="menuitem" tabindex="-1" href="mis_registros.html" style="color: #FDFEFE">Mis registros</a>
+                            </li>    
+                            <li role="presentation" style="padding: 4px">
+                                <a role="menuitem" tabindex="-1" href="salir.html" style="color: #FDFEFE">Salir</a>
+                            </li>    
+                        </ul>
+                      </div>
+                    </div>
+                    <button type="button" class="btn pull-right" style="border-radius: 50px; border:0; margin: 0; padding: 0; outline: none; background-color: transparent;">
+                        <a href="ayuda.html" title="AYUDA">
+                           <span class="glyphicon glyphicon-exclamation-sign" style="color: #FDFEFE; font-size: 35px; margin: 0; padding: 0;"></span>
+                        </a>
+                    </button>
+                </div>
+    		</div>
+    		<div class="row" style="margin: 0">
+    			<div class="col-md12">
+    				<form id="cambio_pwd" style="padding-top: 80px">
+    					<legend class="text-center header" style="padding-top: 0; padding-bottom: 10px;margin: 0; border: 0; color: #FDFEFE;font-size: 25px">
+                            <b>Cambiar contraseña</b>
+                        </legend>
+                        <div class="form-group center-block" style="width: 90%; ">
+                            <input type="password" class="form-control" id="npwd" placeholder="Nueva contraseña" style="border-radius: 45px">
+                        </div>
+                        <div class="form-group center-block" style="width: 90%; ">
+                            <input type="password" class="form-control" id="rpwd" placeholder="Repetir contraseña" style="border-radius: 45px">
+                        </div>
+                        <div class="form-group text-center" style="padding-top: 10px;padding-bottom: 16px">
+                                <button type="submit" class="btn btn-primary btn-lg" style=" border-radius: 45px;background: linear-gradient(to left, #ecee1b, #d71525);">ENVIAR</button>
+                        </div>
+    				</form>
+    			</div>
+    		</div>
+            <br><br><br><br><br><br><br><br><br><br>
+    	</div>	
+        <script type="text/javascript" src="cordova.js"></script>
+        <script>
+            $(document).ready(function(){
+                var session = localStorage.getItem('mi_session');
+                if (session==null) {
+                    alert("Por favor inicie sesion")
+                    localStorage.removeItem("mi_session");
+                    window.location.href =("login.html");
+                }
+                $(".dropdown-toggle").dropdown();
+            });
+            $('#cambio_pwd').submit(function() { 
+                // recolecta los valores que inserto el usuario
+                var datosNpwd       = $("#npwd").val()
+                var datosRpwd       = $("#rpwd").val()
+                var usuario         = localStorage.getItem('mi_session');
+                
+                if (datosNpwd == datosRpwd) {
+                    archivoValidacion = "http://carlos.byethost14.com/webservices/unidos/cambiar_pwd.php?jsoncallback=?"
+                    $.getJSON( archivoValidacion, { nueva_pwd:datosNpwd ,repetir_pwd:datosRpwd, usuario:usuario}).done(function(respuestaServer) {
+                        
+                        if(respuestaServer.validacion == "ok"){
+                            /// si la validacion es correcta, muestra la pantalla "home"
+                            alert("Contraseña actualizada")
+                            window.location.href =("app.html");
+                        }else{
+                            /// ejecutar una conducta cuando la validacion falla
+                            alert("Intente nuevamente" + respuestaServer.mensaje)
+                            window.location.href =("cambiar_pwd.html");
+                        }
+                    })
+                    return false;
+                }
+                else{
+                    alert("Las contraseñas no coinciden...")
+                }
+            })
+        </script>
+    </body>
+</html>

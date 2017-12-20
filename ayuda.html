@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>Conectados</title>
+        <link rel="icon" href="img/logo.ico">
+        <link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+    </head>
+    <body>
+    	<div class="container">
+    		<div class="row" style="margin-left: 5; margin-right: 5">
+                <div class="col-md12" style="padding: 5px">
+                    <legend class="text-center header" style="padding-top: 150px; padding-bottom: 20px; border: 0">
+                        <a href="app.html" title="">
+                            <span class="glyphicon glyphicon-exclamation-sign" style="color: #6b6b6b; font-size: 150px; margin: 0; padding: 0;">
+                            </span>
+                        </a>
+                    </legend>
+                    <legend class="text-center header" style="padding-top: 30px; border: 0; font-size: 33px; color: #6b6b6b">
+                        HTML AYUDA.
+                    </legend>
+                </div>
+            </div>
+    	</div>	
+        <script>
+            $(document).ready(function(){
+                var session = localStorage.getItem('mi_session');
+                if (session==null) {
+                    alert("Por favor inicie sesion")
+                    localStorage.removeItem("mi_session");
+                    window.location.href =("login.html");
+                }
+            });
+        </script>
+        <script type="text/javascript" src="cordova.js"></script>
+    </body>
+</html>

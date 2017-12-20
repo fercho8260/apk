@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>Conectados</title>
+        <link rel="icon" href="img/logo.ico">
+        <link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<!--<link rel="stylesheet" href="css/bootstrap.theme.css">
+        <link rel="stylesheet" href="css/bootstrap.theme.min.css">-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<!--<script src="js/npm.js"></script>-->
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <style type="text/css" media="screen">
+            .log::placeholder { color: white; }
+        </style>
+    </head>
+    <body>
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-md12" style="padding: 5px">
+    				<button type="button" class="btn pull-left" style="border-radius: 50px; border:0; margin: 0; padding: 0; outline: none; background-color: white">
+                        <a href="http://publiteca.22web.org/prototipo/" title="Prototipo">
+    					   <span class="glyphicon glyphicon-folder-open" style="color: #6b6b6b; font-size: 30px; margin: 0; padding: 0;"></span>
+                        </a>
+    				</button>
+    				<button type="button" class="btn pull-right" style="border-radius: 50px; border:0; margin: 0; padding: 0; outline: none; background-color: white">
+                        <a href="ayuda.html" title="AYUDA">
+    					   <span class="glyphicon glyphicon-exclamation-sign" style="color: #6b6b6b; font-size: 30px; margin: 0; padding: 0;"></span>
+                        </a>
+    				</button>
+    			</div>
+    		</div>
+    		<div class="row">
+    			<div class="col-md12">
+    				<form id="login" style="padding-top: 60px">
+    					<legend class="text-center header" style="padding-top: 20px; padding-bottom: 20px; border: 0"><img src="img/banner.png" alt="imagen conectados"></legend>
+    					<div class="form-group center-block" style="width: 90%; ">
+    						<div class="input-group">
+								<span class="input-group-addon" style="border-radius: 45px 0 0 45px; background-color: #6b6b6b; color: white;border-color: #6b6b6b"><i class="glyphicon glyphicon-user"></i></span>
+								<input type="text" class="form-control log" id="usr" placeholder="  Usuario" style="background-color: #6b6b6b; color: white;border-left: 0;border-radius: 0 45px 45px 0; padding-left: 0;border-color: #6b6b6b">
+							</div>
+						</div>
+						<div class="form-group center-block" style="width: 90%; ">
+							<div class="input-group">
+								<span class="input-group-addon" style="border-radius: 45px 0 0 45px; background-color: #6b6b6b; color: white;border-color: #6b6b6b"><i class="glyphicon glyphicon-lock"></i></span>
+								<input type="password" class="form-control log" id="pwd" placeholder="  Contraseña" style="border-radius: 0 45px 45px 0; border-left: 0; padding-left: 0;background-color: #6b6b6b; color: white; border-color: #6b6b6b">
+							</div>
+						</div>
+						<div class="form-group inline center-block" style="width: 90%">
+						<label><a href="registro.html" title="Crear cuenta " style="color: #CCD1D1">Crear cuenta</a></label>
+						<label class="pull-right"><a href="contrasena.html" title="¿Olvido la contraseña?" style="color: #CCD1D1">¿Olvido la contraseña?</a></label>
+						</div>
+						<div class="form-group text-center" style="padding-top: 10px">
+                            <button type="submit" id="botonLogin" class="btn btn-primary btn-lg" style="border-radius: 10px; background: linear-gradient(to right, #ecee1b, #d71525);">INGRESAR</button>
+                        </div>
+    				</form>
+    			</div>
+    		</div>
+    	</div>	
+        <script type="text/javascript" src="cordova.js"></script>
+        <script>
+            $('#login').submit(function() { 
+                
+                // recolecta los valores que inserto el usuario
+                var datosUsuario = $("#usr").val()
+                var datosPassword = $("#pwd").val()
+                
+                archivoValidacion = "http://carlos.byethost14.com/webservices/unidos/login.php?jsoncallback=?"
+                $.getJSON( archivoValidacion, { username:datosUsuario ,password:datosPassword})
+                .done(function(respuestaServer) {
+                    
+                    if(respuestaServer.validacion == "ok"){
+                        /// si la validacion es correcta, muestra la pantalla "home"
+                        window.location.href =("app.html");
+                        localStorage.setItem("mi_session", document.getElementById('usr').value);
+                    }else{
+                      /// ejecutar una conducta cuando la validacion falla
+                      alert("Usuario o Contraseña incorrecto")
+                      window.location.href =("login.html");
+                      localStorage.removeItem("mi_session");
+                    }
+                })
+                return false;
+            })
+        </script>
+    </body>
+</html>
